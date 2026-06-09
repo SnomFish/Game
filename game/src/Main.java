@@ -1,27 +1,25 @@
-package com.snomfish;
+package game.src;
 
 import javax.swing.JFrame;
 
 public class Main {
-
-    public static void main(String[] args) {
-
+    
+    public static void main (String[] args) {
+        
         GamePanel gp = new GamePanel();
 
 
         JFrame window = new JFrame();
-
-        window.setTitle("game");
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         window.setResizable(false);
-        //window.setSize(800, 600); // Set preferred size
+        window.setTitle("game");
+        
         window.add(gp);
+        window.pack();
 
-        window.pack(); // Adjust window size based on the preferred size of components
-        window.setLocationRelativeTo(null); // Center window
+        window.setLocationRelativeTo(null);
         window.setVisible(true);
 
         gp.startGameThread();
     }
-
 }
