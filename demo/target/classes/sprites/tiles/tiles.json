@@ -1,0 +1,31 @@
+[
+    {
+        "name":"brick",
+        "imagePath":"tile_brick_1.png",
+        "hasCollision":false
+    }, {
+        "name":"dirt",
+        "imagePath":"tile_dirt_1.png",
+        "hasCollision":false
+    }, {
+        "name":"grass",
+        "imagePath":"tile_grass_1.png",
+        "hasCollision":false
+    }, {
+        "name":"sand",
+        "imagePath":"tile_sand_1.png",
+        "hasCollision":false
+    }, {
+        "name":"tree",
+        "imagePath":"tile_tree_1.png",
+        "hasCollision":false
+    }, {
+        "name":"tree_2",
+        "imagePath":"tile_tree_2.png",
+        "hasCollision":false
+    }, {
+        "name":"water",
+        "imagePath":"tile_water_1.png",
+        "hasCollision":false
+    }
+]
