@@ -1,30 +1,27 @@
 package github.snomfish;
 
-import java.awt.Graphics2D;
-
+import github.snomfish.camera.Camera;
+import github.snomfish.camera.CameraController;
 import github.snomfish.entity.Player;
-import github.snomfish.number.Vector3;
 import github.snomfish.world.World;
 import github.snomfish.world.WorldRegistry;
 
 public class Workspace {
     
 
-    private final Vector3 defaultCameraPos = Vector3.zero();
-    private final Vector3 defaultPlayerPos = Vector3.zero();
-
+    private final CameraController cameraController;
     private final World world;
-    private final Camera camera;
     private final Player player;
 
 
     public Workspace(
+        Camera camera,
         KeyHandler keyH,
         MouseHandler mouseH
     ) {
-        world = WorldRegistry.generateNewWorld("test_world");
-        camera = new Camera(defaultCameraPos, keyH);
-        player = new Player(defaultPlayerPos, keyH);
+        this.world = WorldRegistry.generateNewWorld("test_world");
+        this.cameraController = new CameraController(camera);
+        this.player = new Player(keyH, mouseH);
 
         
     }
@@ -35,12 +32,12 @@ public class Workspace {
 
     public void update() {
         player.update();
-        camera.update(player);
+        cameraController.update(player);
     }
 
 
-    public void render(Graphics2D g2) {
-        world.render(g2, camera);
-        player.render(g2, camera);
+    public void render(Renderer renderer) {
+        renderer.renderWorld(world);
+        player.render(renderer);
     }
 }

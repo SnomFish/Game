@@ -3,8 +3,12 @@ package github.snomfish;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+import github.snomfish.camera.Camera;
+
 public class MouseHandler extends MouseAdapter {
     
+
+    private final Camera camera;
 
     private int mouseX;
     private int mouseY;
@@ -14,7 +18,11 @@ public class MouseHandler extends MouseAdapter {
 
 
     // CONSTRUCTOR
-    public MouseHandler() {}
+    public MouseHandler(
+        Camera camera
+    ) {
+        this.camera = camera;
+    }
 
 
     // TOSTRING

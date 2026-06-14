@@ -6,7 +6,7 @@ import java.util.List;
 
 import github.snomfish.Direction;
 import github.snomfish.JsonParser;
-import github.snomfish.Render;
+import github.snomfish.Renderer;
 
 public class RandomTile extends Tile{
     
@@ -22,7 +22,7 @@ public class RandomTile extends Tile{
         
         BufferedImage image = JsonParser.parseImage(TileRegistry.FOLDER_FILE_PATH + imagePath);
         for (Direction dir : Direction.values()) {
-            images.add(Render.rotate(image, dir));
+            images.add(Renderer.rotate(image, dir));
         }
     }
 

@@ -34,8 +34,8 @@ public class ChunkRegistry {
             dictionary = chunk.getDictionary();
             
             if (registry.containsKey(name)) throw new RuntimeException("Attempted to overwrite chunk with same name: " + name);
-            if (intMap.length != 16) throw new RuntimeException("intMap for chunk " + name + " has the wrong num of cols (" + intMap.length + ")");
-            if (!Arrays.stream(intMap).allMatch(a -> a.length == 16)) throw new RuntimeException("intMap for chunk " + name + " has the wrong num of rows");
+            if (intMap.length < ChunkTemplate.LENGTH) throw new RuntimeException("intMap for chunk " + name + " has too few cols (" + intMap.length + ")");
+            if (!Arrays.stream(intMap).allMatch(a -> a.length >= ChunkTemplate.LENGTH)) throw new RuntimeException("intMap for chunk " + name + " has too few rows");
             
             registry.put(chunk.getName(), chunk);
             

@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import github.snomfish.Camera;
+import github.snomfish.camera.Camera;
 import github.snomfish.chunk.ChunkInstance;
 import github.snomfish.chunk.ChunkTemplate;
 import github.snomfish.number.Vector3;
@@ -88,28 +88,34 @@ public class World {
 
         Vector3 chunkPos = chunkInstance.getPos();
         int[][] intMap = chunkInstance.getIntMap();
+        int[][] heightMap = chunkInstance.getHeightMap();
         String[] dictionary = chunkInstance.getDictionary();
+
         String tileName;
         Tile tile;
         BufferedImage image;
+        int height;
         int screenX;
         int screenY;
-        int screenSize;
+        int screenSizeX;
+        int screenSizeY;
 
         for (int i = 0; i < ChunkTemplate.LENGTH; i ++) {
             for (int j = 0; j < ChunkTemplate.LENGTH; j ++) {
                 tileName = dictionary[intMap[i][j]];
                 tile = TileRegistry.get(tileName);
                 image = tile.getImage(i, j);
+                height = heightMap[i][j] * Tile.HEIGHT;
                 screenX = (int) ((chunkPos.getX() + (j * Tile.SIZE) - cameraRenderX) * scale);
-                screenY = (int) ((chunkPos.getY() + (i * Tile.SIZE) - cameraRenderY) * scale);
-                screenSize = (int) (Tile.SIZE * scale);
+                screenY = (int) ((chunkPos.getY() + (i * Tile.SIZE_Y) - cameraRenderY - height) * scale);
+                screenSizeX = (int) (Tile.SIZE * scale);
+                screenSizeY = (int) (Tile.SIZE_Y * scale);
                 g2.drawImage(
                     image,
                     screenX,
                     screenY,
-                    screenSize,
-                    screenSize,
+                    screenSizeX,
+                    screenSizeY,
                     null
                 );
             }

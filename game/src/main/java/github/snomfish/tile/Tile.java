@@ -6,6 +6,8 @@ public abstract class Tile {
     
 
     public static int SIZE = 16;
+    public static int SIZE_Y = 16;
+    public static int HEIGHT = 3;
 
     protected String name;
 

@@ -2,5 +2,6 @@
     "chunk_err.json",
     
     "chunk_default.json",
+    "chunk_dungeon.json",
     "chunk_grasslands.json"
 ]
